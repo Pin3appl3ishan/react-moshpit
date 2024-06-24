@@ -12,4 +12,4 @@ const Button = ({children, onClick, color}: Props) => {
   )
 }
 
-export default Button
+export default Button;
