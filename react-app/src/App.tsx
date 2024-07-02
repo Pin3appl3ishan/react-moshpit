@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Form from "./components/Form";
 
 function App() {
   const [cart, setCart] = useState({
@@ -9,12 +10,13 @@ function App() {
     ],
   });
 
-  const handlClick = () => {
+  const handleClick = () => {
     setCart({...cart, items: cart.items.map(item => item.id === 1 ? {...item, quantity: item.quantity + 1} : item)})
   }
 
+
   return (
-<button onClick={handlClick}>Click Me</button>
+    <Form/>
   );
 }
 
