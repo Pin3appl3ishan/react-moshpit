@@ -9,7 +9,7 @@ const Form = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm<FormData>();
 
   const onSubmit = (data: FieldValues) => console.log(data);
@@ -21,7 +21,7 @@ const Form = () => {
           Name
         </label>
         <input
-          {...(register("name"), { required: true, minLength: 3 })}
+          {...register('name', { required: true, minLength: 3 })}
           type="text"
           id="name"
           className="form-control"
