@@ -6,7 +6,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 const schema = z.object({
   description: z.string().min(3, {message: 'Description should be at least three character.'}).max(50),
   amount: z.number({invalid_type_error: 'Amount is required.'}).min(0.01).max(100_000),
-  category: z.enum(categories),
+  category: z.enum(categories, {
+    errorMap: () => ({message: 'Category is required.'})
+  }),
 });
 
 type ExpernseFormData = z.infer<typeof schema>;
@@ -19,7 +21,7 @@ const ExpenseForm = () => {
   } = useForm<ExpernseFormData>({ resolver: zodResolver(schema) });
 
   return (
-    <form onSubmit={handleSubmit(data => )}>
+    <form onSubmit={handleSubmit(data => console.log(data))}> 
       <div className="mb-3">
         <label htmlFor="description" className="form-label">
           Description
