@@ -1,22 +1,18 @@
 import { useState } from "react";
-import Form from "./components/Form";
+import ExpenseList from "./expense-tracker/components/ExpenseList";
 
 function App() {
-  const [cart, setCart] = useState({
-    discount: .1,
-    items: [
-      {id: 1, title: 'Product 1', quantity: 1},
-      {id: 2, title: 'Product 2', quantity: 1},
-    ],
-  });
-
-  const handleClick = () => {
-    setCart({...cart, items: cart.items.map(item => item.id === 1 ? {...item, quantity: item.quantity + 1} : item)})
-  }
-
+  const [expenses, setExpenses] = useState ([
+    {id: 1, description: 'aaa', amount: 10, category: 'Utilities'},
+    {id: 2, description: 'bbb', amount: 10, category: 'Utilities'},
+    {id: 3, description: 'ccc', amount: 10, category: 'Utilities'},
+    {id: 4, description: 'ddd', amount: 10, category: 'Utilities'},
+  ])
 
   return (
-    <Form/>
+    <div>
+      <ExpenseList expenses={expenses} onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}/>
+    </div>
   );
 }
 
